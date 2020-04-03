@@ -15,17 +15,7 @@ import io.cucumber.datatable.DataTable;
 
 public class AddCustomerSteps {
 	
-	static WebDriver driver;
 	
-	@Given("User launches demo telecom site")
-	public void user_launches_demo_telecom_site() {
-		
-	 System.setProperty("webdriver.chrome.driver","C:\\Users\\Rajesh\\eclipse-workspace\\Mavenn\\drivers\\chromedriver.exe");
-	 driver = new ChromeDriver();
-	 driver.get("http://demo.guru99.com/telecom/index.html");
-     driver.manage().window().maximize();
-
-	}
 
 	@Given("User click on add customer button")
 	public void user_click_on_add_customer_button() throws Throwable {
@@ -33,7 +23,7 @@ public class AddCustomerSteps {
 		handleFrame();
 		}catch(Exception e) {
 		}
-	   driver.findElement(By.xpath("(//a[text()='Add Customer'])[1]")).click();
+	   Hook.driver.findElement(By.xpath("(//a[text()='Add Customer'])[1]")).click();
 	   
 	}
 
@@ -43,12 +33,12 @@ public class AddCustomerSteps {
 			handleFrame();
 		}catch(Exception e) {
 		}
-	   driver.findElement(By.xpath("(//label[@for='done'])[1]")).click();
-	   driver.findElement(By.id("fname")).sendKeys("Thara");
-	   driver.findElement(By.id("lname")).sendKeys("gold");
-	   driver.findElement(By.id("email")).sendKeys("thara123@gmail.com");
-	   driver.findElement(By.name("addr")).sendKeys("pudukkottai");
-	   driver.findElement(By.id("telephoneno")).sendKeys("12466766");
+	  Hook.driver.findElement(By.xpath("(//label[@for='done'])[1]")).click();
+	   Hook.driver.findElement(By.id("fname")).sendKeys("Thara");
+	   Hook.driver.findElement(By.id("lname")).sendKeys("gold");
+	   Hook.driver.findElement(By.id("email")).sendKeys("thara123@gmail.com");
+	   Hook.driver.findElement(By.name("addr")).sendKeys("pudukkottai");
+	   Hook.driver.findElement(By.id("telephoneno")).sendKeys("12466766");
 	 }
 	@When("User enters all the fields with one dimensional")
 	public void user_enters_all_the_fields_with_one_dimensional(DataTable customerData) throws Throwable {
@@ -58,12 +48,12 @@ public class AddCustomerSteps {
 			handleFrame();
 		}catch(Exception e) {
 		}
-	   driver.findElement(By.xpath("(//label[@for='done'])[1]")).click();
-	   driver.findElement(By.id("fname")).sendKeys(data.get(0));
-	   driver.findElement(By.id("lname")).sendKeys(data.get(1));
-	   driver.findElement(By.id("email")).sendKeys(data.get(2));
-	   driver.findElement(By.name("addr")).sendKeys(data.get(3));
-	   driver.findElement(By.id("telephoneno")).sendKeys(data.get(4));
+	  Hook. driver.findElement(By.xpath("(//label[@for='done'])[1]")).click();
+	   Hook.driver.findElement(By.id("fname")).sendKeys(data.get(0));
+	   Hook.driver.findElement(By.id("lname")).sendKeys(data.get(1));
+	   Hook.driver.findElement(By.id("email")).sendKeys(data.get(2));
+	   Hook.driver.findElement(By.name("addr")).sendKeys(data.get(3));
+	   Hook.driver.findElement(By.id("telephoneno")).sendKeys(data.get(4));
 	 }
 	@When("User enters all the fields with one dimensional map")
 	public void user_enters_all_the_fields_with_one_dimensional_map(DataTable customerData) throws Throwable {
@@ -72,12 +62,12 @@ public class AddCustomerSteps {
 				handleFrame();
 			}catch(Exception e) {
 			}
-		   driver.findElement(By.xpath("(//label[@for='done'])[1]")).click();
-		   driver.findElement(By.id("fname")).sendKeys(data.get("Fname"));
-		   driver.findElement(By.id("lname")).sendKeys(data.get("Lname"));
-		   driver.findElement(By.id("email")).sendKeys(data.get("Email"));
-		   driver.findElement(By.name("addr")).sendKeys(data.get("Address"));
-		   driver.findElement(By.id("telephoneno")).sendKeys(data.get("Phno"));
+		   Hook.driver.findElement(By.xpath("(//label[@for='done'])[1]")).click();
+		   Hook.driver.findElement(By.id("fname")).sendKeys(data.get("Fname"));
+		   Hook.driver.findElement(By.id("lname")).sendKeys(data.get("Lname"));
+		   Hook.driver.findElement(By.id("email")).sendKeys(data.get("Email"));
+		   Hook.driver.findElement(By.name("addr")).sendKeys(data.get("Address"));
+		   Hook.driver.findElement(By.id("telephoneno")).sendKeys(data.get("Phno"));
 		
 	}
 	
@@ -87,7 +77,7 @@ public class AddCustomerSteps {
 	public void user_click_on_submit_button() throws Exception {
 		
 		
-		  driver.findElement(By.xpath("(//input[@value='submit'])[1]")).click();
+		  Hook.driver.findElement(By.xpath("(//input[@value='submit'])[1]")).click();
 		  
 	}
 
@@ -99,16 +89,16 @@ public class AddCustomerSteps {
 			handleFrame();
 		}catch(Exception e) {
 		}
-	Assert.assertTrue(driver.findElement(By.xpath("(//td[@align='center'])[2]")).isDisplayed());
-	String text = driver.findElement(By.xpath("(//td[@align='center'])[2]")).getText();
+	Assert.assertTrue(Hook.driver.findElement(By.xpath("(//td[@align='center'])[2]")).isDisplayed());
+	String text = Hook.driver.findElement(By.xpath("(//td[@align='center'])[2]")).getText();
 	   System.out.println(text);
 	}
 	
 	public void handleFrame() throws Throwable {
 	 Thread.sleep(5000);
-	   driver.switchTo().frame(driver.findElement(By.xpath("//*[@id=\"flow_close_btn_iframe\"]")));
-		 driver.findElement(By.id("closeBtn")).click();
-		 driver.switchTo().parentFrame();
+	   Hook.driver.switchTo().frame(Hook.driver.findElement(By.xpath("//*[@id=\"flow_close_btn_iframe\"]")));
+		 Hook.driver.findElement(By.id("closeBtn")).click();
+		 Hook.driver.switchTo().parentFrame();
 	}
 
 

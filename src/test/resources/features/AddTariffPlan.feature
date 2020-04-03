@@ -1,15 +1,17 @@
 Feature: Add Tariff Plan in demo site
 
+Background:
+        And User click on Add tariff plan button
+
   Scenario: Add Tariff Plan with hard coded datas
-    Given User launches demo telecom site in Add Tariff plan
-    And User click on Add tariff plan button
+   //Given user line Hook class using
     When User Enters all the field
     And User click on  tariff plan submit button
     Then User should be displayed the congratulation you add tariff plan
 
   Scenario: Add Tariff Plan with hard coded datas
-    Given User launches demo telecom site in Add Tariff plan
-    And User click on Add tariff plan button
+   // Given User launches demo telecom site in Add Tariff plan
+   // And User click on Add tariff plan button---- Background using
     When User Enters all the field with two dim list
       | 100 | 200 |  300 | 400 |  1 |  2 |  3 |
       | 200 | 400 |  600 | 800 |  2 |  4 |  6 |
@@ -20,8 +22,8 @@ Feature: Add Tariff Plan in demo site
     Then User should be displayed the congratulation you add tariff plan
 
   Scenario: Add Tariff Plan with hard coded datas
-    Given User launches demo telecom site in Add Tariff plan
-    And User click on Add tariff plan button
+   // Given User launches demo telecom site in Add Tariff plan
+   // And User click on Add tariff plan button
     When User Enters all the field with two dim map
       | MR  | FLM | FIM  | FSP | LPMC | IPMC | SPC |
       | 100 | 200 |  300 | 400 |    1 |    2 |   3 |
@@ -33,8 +35,8 @@ Feature: Add Tariff Plan in demo site
     Then User should be displayed the congratulation you add tariff plan
 
    Scenario Outline: 
-    Given User launches demo telecom site in Add Tariff plan
-    And User click on Add tariff plan button
+   // Given User launches demo telecom site in Add Tariff plan
+   // And User click on Add tariff plan button
     When User Enters all the field  "<MR>","<FLM>","<FIM>","<FSP>","<LPMC>","<IPMC>","<SPC>"
     And User click on  tariff plan submit button
     Then User should be displayed the congratulation you add tariff plan
