@@ -1,14 +1,17 @@
+@regressionMarch 
 Feature: Add Tariff Plan in demo site
 
 Background:
         And User click on Add tariff plan button
-
+        
+@sanity
   Scenario: Add Tariff Plan with hard coded datas
    //Given user line Hook class using
     When User Enters all the field
     And User click on  tariff plan submit button
     Then User should be displayed the congratulation you add tariff plan
 
+@smoke
   Scenario: Add Tariff Plan with hard coded datas
    // Given User launches demo telecom site in Add Tariff plan
    // And User click on Add tariff plan button---- Background using
@@ -21,6 +24,7 @@ Background:
     And User click on  tariff plan submit button
     Then User should be displayed the congratulation you add tariff plan
 
+@thara
   Scenario: Add Tariff Plan with hard coded datas
    // Given User launches demo telecom site in Add Tariff plan
    // And User click on Add tariff plan button
@@ -33,7 +37,8 @@ Background:
       | 888 | 444 |  666 | 222 |    8 |    6 |   4 |
     And User click on  tariff plan submit button
     Then User should be displayed the congratulation you add tariff plan
-
+ 
+ @sanity
    Scenario Outline: 
    // Given User launches demo telecom site in Add Tariff plan
    // And User click on Add tariff plan button
