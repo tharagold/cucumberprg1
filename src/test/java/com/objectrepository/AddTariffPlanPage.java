@@ -6,11 +6,20 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.resources.FunctionalLibrary;
 
-public class AddTariffPlanPage extends FunctionalLibrary{
+public class AddTariffPlanPage {
 	
-	public AddTariffPlanPage() {
-		PageFactory.initElements(driver, this);		
+	public static AddTariffPlanPage atp;	
+	 FunctionalLibrary f = FunctionalLibrary.getInstance();
+	
+	private AddTariffPlanPage() {
+		PageFactory.initElements(FunctionalLibrary.driver, this);		
 	}
+	 public static AddTariffPlanPage getTariffPlanPageInstance(){
+    	 if(atp==null) {
+    		 atp = new AddTariffPlanPage();
+    	 }
+    	 return atp;
+     }
 	
 	 @FindBy(xpath = "//a[text()='Add Tariff Plan']")
 	    private WebElement doneBtn;

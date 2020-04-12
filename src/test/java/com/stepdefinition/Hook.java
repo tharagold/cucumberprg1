@@ -7,21 +7,21 @@ import com.resources.FunctionalLibrary;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 
-public class Hook extends FunctionalLibrary {
+public class Hook  {
 	
-	FunctionalLibrary f=new FunctionalLibrary();
+	FunctionalLibrary f=FunctionalLibrary.getInstance();
 	
-	@Before
+@Before
 		public void beforeScenario() {
 		
-f.launch("http://demo.guru99.com/telecom/index.html");		
-	     driver.manage().window().maximize();
+        f.launch("http://demo.guru99.com/telecom/index.html");		
+	     FunctionalLibrary.driver.manage().window().maximize();
 	}
 	
 	@After
 	public void afterScenario() {	
 		
-    driver.quit();
+   FunctionalLibrary.driver.quit();
 	}
 	
 }

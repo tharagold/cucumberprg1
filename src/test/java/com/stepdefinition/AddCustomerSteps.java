@@ -17,11 +17,12 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.cucumber.datatable.DataTable;
 
-public class AddCustomerSteps extends FunctionalLibrary {
+public class AddCustomerSteps  {
 	
-	FunctionalLibrary f=new FunctionalLibrary();
-	HomePage hp=new HomePage();
-	AddCustomerPage acp=new AddCustomerPage();
+	FunctionalLibrary f= FunctionalLibrary.getInstance();
+	
+	HomePage hp=HomePage.getHomeInstance();
+	AddCustomerPage acp=AddCustomerPage.getCustomerInstance();
 
 	@Given("User click on add customer button")
 	public void user_click_on_add_customer_button() throws Throwable {
@@ -76,12 +77,12 @@ public class AddCustomerSteps extends FunctionalLibrary {
 				handleFrame();
 			}catch(Exception e) {
 			}
-		   driver.findElement(By.xpath("(//label[@for='done'])[1]")).click();
-		   driver.findElement(By.id("fname")).sendKeys(data.get("Fname"));
-		   driver.findElement(By.id("lname")).sendKeys(data.get("Lname"));
-		   driver.findElement(By.id("email")).sendKeys(data.get("Email"));
-		   driver.findElement(By.name("addr")).sendKeys(data.get("Address"));
-		   driver.findElement(By.id("telephoneno")).sendKeys(data.get("Phno"));
+		  FunctionalLibrary.driver.findElement(By.xpath("(//label[@for='done'])[1]")).click();
+		  FunctionalLibrary.driver.findElement(By.id("fname")).sendKeys(data.get("Fname"));
+		  FunctionalLibrary. driver.findElement(By.id("lname")).sendKeys(data.get("Lname"));
+		  FunctionalLibrary.driver.findElement(By.id("email")).sendKeys(data.get("Email"));
+		  FunctionalLibrary.driver.findElement(By.name("addr")).sendKeys(data.get("Address"));
+		  FunctionalLibrary. driver.findElement(By.id("telephoneno")).sendKeys(data.get("Phno"));
 		
 	}
 	
@@ -102,17 +103,17 @@ public class AddCustomerSteps extends FunctionalLibrary {
 			handleFrame();
 		}catch(Exception e) {
 		}
-	Assert.assertTrue(driver.findElement(By.xpath("(//td[@align='center'])[2]")).isDisplayed());
-	String text = driver.findElement(By.xpath("(//td[@align='center'])[2]")).getText();
+	Assert.assertTrue(FunctionalLibrary.driver.findElement(By.xpath("(//td[@align='center'])[2]")).isDisplayed());
+	String text = FunctionalLibrary.driver.findElement(By.xpath("(//td[@align='center'])[2]")).getText();
 	   System.out.println(text);
 	}
 	
 	public void handleFrame() throws Throwable {
 	 Thread.sleep(5000);
-	   driver.switchTo().frame(driver.findElement(By.xpath("//*[@id=\"flow_close_btn_iframe\"]")));
-		 driver.findElement(By.id("closeBtn")).click();
-		 driver.switchTo().parentFrame();
+	 FunctionalLibrary.driver.switchTo().frame(FunctionalLibrary.driver.findElement(By.xpath("//*[@id=\"flow_close_btn_iframe\"]")));
+	 FunctionalLibrary.driver.findElement(By.id("closeBtn")).click();
+	 FunctionalLibrary.driver.switchTo().parentFrame();
 	}
-
+	
 
 }

@@ -17,10 +17,11 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.cucumber.datatable.DataTable;
 
-public class AddTariffPlanSteps  extends FunctionalLibrary{
-	 FunctionalLibrary f=new FunctionalLibrary();
-	 HomePage hp=new HomePage();
-	 AddTariffPlanPage atp=new AddTariffPlanPage();	
+public class AddTariffPlanSteps {
+	
+	 FunctionalLibrary f=FunctionalLibrary.getInstance();
+	 HomePage hp= HomePage.getHomeInstance();
+	 AddTariffPlanPage atp=AddTariffPlanPage.getTariffPlanPageInstance();	
 	 
 	@Given("User click on Add tariff plan button")
 	public void user_click_on_Add_tariff_plan_button() throws Throwable {
@@ -87,25 +88,25 @@ public class AddTariffPlanSteps  extends FunctionalLibrary{
 		
 		}
 		
-		driver.findElement(By.id("rental1")).sendKeys(data.get(3).get("MR"));
-		 driver.findElement(By.id("local_minutes")).sendKeys(data.get(3).get("FLM"));
-		 driver.findElement(By.id("inter_minutes")).sendKeys(data.get(3).get("FIM"));
-		 driver.findElement(By.name("sms_pack")).sendKeys(data.get(3).get("FSP"));
-		 driver.findElement(By.id("minutes_charges")).sendKeys(data.get(2).get("LPMC"));
-		 driver.findElement(By.name("inter_charges")).sendKeys(data.get(3).get("IPMC"));
-		 driver.findElement(By.id("sms_charges")).sendKeys(data.get(3).get("SPC"));
+		FunctionalLibrary.driver.findElement(By.id("rental1")).sendKeys(data.get(3).get("MR"));
+		FunctionalLibrary.driver.findElement(By.id("local_minutes")).sendKeys(data.get(3).get("FLM"));
+		FunctionalLibrary.driver.findElement(By.id("inter_minutes")).sendKeys(data.get(3).get("FIM"));
+		FunctionalLibrary. driver.findElement(By.name("sms_pack")).sendKeys(data.get(3).get("FSP"));
+		FunctionalLibrary.driver.findElement(By.id("minutes_charges")).sendKeys(data.get(2).get("LPMC"));
+		FunctionalLibrary.driver.findElement(By.name("inter_charges")).sendKeys(data.get(3).get("IPMC"));
+		FunctionalLibrary.driver.findElement(By.id("sms_charges")).sendKeys(data.get(3).get("SPC"));
 		
 	}
 	
 	@When("User Enters all the field  {string},{string},{string},{string},{string},{string},{string}")
 	public void user_Enters_all_the_field(String string, String string2, String FIM, String string4, String string5, String string6, String SPC) {
-		 driver.findElement(By.id("rental1")).sendKeys(string);
-		 driver.findElement(By.id("local_minutes")).sendKeys(string2);
-		 driver.findElement(By.id("inter_minutes")).sendKeys(FIM);
-		 driver.findElement(By.name("sms_pack")).sendKeys(string4);
-		 driver.findElement(By.id("minutes_charges")).sendKeys(string5);
-		 driver.findElement(By.name("inter_charges")).sendKeys(string6);
-		 driver.findElement(By.id("sms_charges")).sendKeys(SPC);
+		FunctionalLibrary.driver.findElement(By.id("rental1")).sendKeys(string);
+		FunctionalLibrary.driver.findElement(By.id("local_minutes")).sendKeys(string2);
+		FunctionalLibrary.driver.findElement(By.id("inter_minutes")).sendKeys(FIM);
+		FunctionalLibrary.driver.findElement(By.name("sms_pack")).sendKeys(string4);
+		FunctionalLibrary.driver.findElement(By.id("minutes_charges")).sendKeys(string5);
+		FunctionalLibrary. driver.findElement(By.name("inter_charges")).sendKeys(string6);
+		FunctionalLibrary.driver.findElement(By.id("sms_charges")).sendKeys(SPC);
 		
 		
 	}
@@ -125,14 +126,14 @@ public class AddTariffPlanSteps  extends FunctionalLibrary{
 			handleFrame();
 		}catch(Exception e) {
 		}
-		Assert.assertEquals( driver.findElement(By.xpath("//h2[text()='Congratulation you add Tariff Plan']")).getText(), "Congratulation you add Tariff Plan");
+		Assert.assertEquals( FunctionalLibrary.driver.findElement(By.xpath("//h2[text()='Congratulation you add Tariff Plan']")).getText(), "Congratulation you add Tariff Plan");
 
 	}
 	public void handleFrame() throws Throwable {
 		 Thread.sleep(3000);
-		 driver.switchTo().frame( driver.findElement(By.xpath("//iframe[@id='flow_close_btn_iframe']")));
-		 driver.findElement(By.id("closeBtn")).click();
-		 driver.switchTo().parentFrame();
+		 FunctionalLibrary.driver.switchTo().frame( FunctionalLibrary.driver.findElement(By.xpath("//iframe[@id='flow_close_btn_iframe']")));
+		 FunctionalLibrary.driver.findElement(By.id("closeBtn")).click();
+		 FunctionalLibrary.driver.switchTo().parentFrame();
 	}
 }
 

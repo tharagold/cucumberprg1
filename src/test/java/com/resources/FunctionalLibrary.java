@@ -5,7 +5,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class FunctionalLibrary {
+
 	
+	public static FunctionalLibrary f1;
+	
+	private FunctionalLibrary() {
+		// TODO Auto-generated constructor stub
+	}
+	 public static FunctionalLibrary getInstance() {
+     if(f1==null) {
+	f1=new FunctionalLibrary();
+	}
+     return f1;
+
+	}
 	public static WebDriver driver;
 	
 	public void launch(String url) {

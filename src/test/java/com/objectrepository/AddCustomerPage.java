@@ -6,11 +6,21 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.resources.FunctionalLibrary;
 
-public class AddCustomerPage  extends FunctionalLibrary{
+public class AddCustomerPage {
 	
-	public AddCustomerPage() {
-      PageFactory.initElements(driver, this);	
+	public static AddCustomerPage acp;
+	FunctionalLibrary f = FunctionalLibrary.getInstance();
+	  
+	private AddCustomerPage() {
+      PageFactory.initElements(FunctionalLibrary.driver, this);	
      }
+	public static AddCustomerPage getCustomerInstance() {
+		if(acp==null) {
+			acp = new AddCustomerPage();
+		}
+		return acp;
+	}
+	
     @FindBy(xpath = "(//label[@for='done'])[1]")
     private WebElement doneBtn;
     

@@ -6,12 +6,21 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.resources.FunctionalLibrary;
 
-public class HomePage extends FunctionalLibrary {
+public class HomePage {
 	
+	public static HomePage hp;
 	public HomePage() {
-       PageFactory.initElements(driver, this);
-	}
+		FunctionalLibrary f = FunctionalLibrary.getInstance();
 	
+       PageFactory.initElements(FunctionalLibrary.driver, this);
+	
+	}
+	public static HomePage getHomeInstance() {
+		if(hp==null) {
+			hp = new HomePage();
+		}
+		return hp;
+	}
 	
 	@FindBy(xpath = "(//a[text()='Add Customer'])[1]")
 	private  WebElement addCustomerBtn;
